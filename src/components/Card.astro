@@ -1,0 +1,274 @@
+---
+import GitHubIcon from "./icons/GitHubIcon.astro";
+import LinkedInIcon from "./icons/LinkedInIcon.astro";
+import PortfolioIcon from "./icons/PortfolioIcon.astro";
+import LinkBtn from "./LinkBtn.astro";
+---
+
+<script>
+    const $card = document.getElementById("card");
+    const $section = document.getElementById("section");
+
+    $card.addEventListener("click", (e) => {
+        $section.classList.add("pulse");
+        $section.addEventListener(
+            "animationend",
+            () => {
+                $section.classList.remove("pulse");
+            },
+            { once: true },
+        );
+    });
+</script>
+
+<section id="section">
+    <span class="circuit-mask"></span>
+    <article id="card">
+        <h1>Kristian Cifuentes</h1>
+        <h2>Desarrollador Web Frontend</h2>
+        <p></p>
+        <nav>
+            <LinkBtn
+                link="https://www.linkedin.com/in/kristian-dario-cifuentes-vera-bb24b5159/"
+                aria-label="Ir a LinkedIn"
+            >
+                <span class="slot-text">LinkedIn</span>
+                <LinkedInIcon slot="image" />
+            </LinkBtn>
+            <LinkBtn
+                link="https://github.com/KristianC8"
+                aria-label="Ir a GitHub"
+            >
+                <span class="slot-text">GitHub</span>
+                <GitHubIcon slot="image" />
+            </LinkBtn>
+            <LinkBtn
+                link="https://portfolio-kristian-55z.pages.dev/"
+                aria-label="Ir a Portfolio"
+            >
+                <span class="slot-text">Portfolio</span>
+                <PortfolioIcon slot="image" />
+            </LinkBtn>
+        </nav>
+    </article>
+</section>
+
+<style>
+    section {
+        position: relative;
+        width: 25rem;
+        height: 26.25rem;
+        border-radius: 0.5rem;
+        background-color: #0d1117;
+    }
+
+    section::before,
+    .circuit-mask {
+        position: absolute;
+        content: "";
+        display: block;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 68.75rem;
+        height: 39.9rem;
+    }
+
+    section::before {
+        background: url("/img/back.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+    }
+
+    .circuit-mask {
+        display: grid;
+        place-items: center;
+        -webkit-mask: url("/img/back.svg");
+        -webkti-mask-repeat: no-repeat;
+        -webkti-mask-position: center;
+        -webkti-mask-size: 100%;
+        mask: url("/img/back.svg");
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: 100%;
+    }
+
+    .circuit-mask::before {
+        content: "";
+        position: absolute;
+        height: 39.9rem;
+        width: 85px;
+        border: solid 3px #2893e9;
+        border-radius: 25%;
+        animation-name: wave;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+    }
+
+    article {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 0.5rem;
+        width: 100%;
+        height: 100%;
+        background-color: #0d1117;
+        /* background-color: #080808; */
+        border-radius: 0.5rem;
+        animation:
+            fadeIn 2s,
+            shadowFade 2s forwards;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        border: solid 3px #474d54;
+    }
+
+    article::before {
+        content: "";
+        display: block;
+        height: 50%;
+        background-image: url("/img/Logo.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 60%;
+        filter: drop-shadow(0 0 4px #2893e9);
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: #0a69bf;
+        /* color: #2893e9; */
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        color: #7c848e;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .pulse {
+        -webkit-animation: pulse forwards ease;
+        animation: pulse forwards ease;
+        -webkit-animation-duration: 0.5s;
+        animation-duration: 0.5s;
+    }
+
+    @media (max-width: 1366px) {
+        section::before,
+        .circuit-mask {
+            width: 55.3rem;
+            height: 31.25rem;
+        }
+        .circuit-mask::before {
+            height: 31.25rem;
+        }
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+        }
+    }
+
+    @media (max-width: 1220px) {
+        section::before,
+        .circuit-mask {
+            display: none;
+        }
+    }
+
+    @media (max-width: 1100px) {
+        section {
+            width: 23.2rem;
+            height: 24.4rem;
+        }
+        article::before {
+            background-size: 60%;
+        }
+    }
+
+    @media (max-width: 800px) {
+        section {
+            width: 22rem;
+            height: 24rem;
+        }
+    }
+
+    @media (max-width: 500px) {
+        article::before {
+            background-size: 70%;
+        }
+
+        section {
+            width: 18.75rem;
+            height: 22rem;
+        }
+
+        .slot-text {
+            display: none;
+        }
+
+        nav {
+            gap: 2rem;
+        }
+    }
+
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes shadowFade {
+        from {
+            box-shadow: 0 0 120px 2px #2893e9;
+        }
+        to {
+            box-shadow: 0 0 5px 0 #2893e9;
+        }
+    }
+
+    @keyframes pulse {
+        from {
+            box-shadow: 0 0 50px 2px #2893e9;
+        }
+        to {
+            box-shadow: 0 0 2px 0 #2893e9;
+        }
+    }
+
+    @keyframes wave {
+        0% {
+            transform: scaleX(1);
+        }
+        50% {
+            transform: scaleX(13.3);
+        }
+        100% {
+            transform: scaleX(13.3);
+        }
+    }
+</style>
