@@ -7,13 +7,24 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content="Tarjeta de Presentación" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+		<meta property="og:title" content="Tarjeta de presentación" />
+		<meta
+			property="og:description"
+			content="Kristian Cifuentes Desarrollador y Programador Web. LinkedIn, GitHub, Portofolio"
+		/>
+		<!-- <meta property="og:image" content="https://i.postimg.cc/T2nB1h7P/portada-portfolio.jpg"> -->
+		<meta
+			property="og:image"
+			content="https://www.dropbox.com/scl/fi/ofaym2crbbob43mjyvt19/Screenshot-2024-08-01-181328.jpg?rlkey=9jbpp2268eu5m2mphj889ddrl&st=09jfkyx9&dl=0"
+		/>
+		<meta property="og:url" content="https://kristianc8.github.io/" />
+		<meta property="og:type" content="website" />
 		<title>{title}</title>
 	</head>
 	<body>
